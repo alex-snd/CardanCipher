@@ -1,4 +1,4 @@
-#include "Cardan.h"
+#include "include/Cardan.h"
 
 using boolVector2d = std::vector<std::vector<bool>>;
 using stringVector2d = std::vector<std::vector<std::string>>;
