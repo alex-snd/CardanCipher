@@ -1,5 +1,6 @@
 x64
 .vs
+build
 CardanCipher.sln
 CardanCipher.vcxproj
 CardanCipher.vcxproj.filters
