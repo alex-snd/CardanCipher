@@ -82,6 +82,8 @@ void save(boolVector2d constChosenGridPositions, std::string encriptedText, size
 	for (auto i = 0; i < 2 * blocksCount * ((gridSize * gridSize) / 4) + blocksCount - 1; i++)
 		out << "-";
 	out << "\n";
+
+	out.close();
 }
 
 
