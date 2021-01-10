@@ -11,7 +11,6 @@ void checkFile(std::string fileName)
 	if (!temp.is_open())
 	{
 		std::cout << "Невозможно открыть файл '" << fileName << "'\n";
-		system("pause");
 		exit(0);
 	}
 	else
@@ -26,7 +25,6 @@ void checkFile(std::string fileName)
 		temp.close();
 
 		std::cout << "Файл '" << fileName << "' пуст!\n";
-		system("pause");
 		exit(0);
 
 	}
@@ -418,7 +416,7 @@ void parse_arguments(int argc, char* argv[], short& gridSize, std::string& encry
 		std::cout << "-o Задает путь к файлу для сохранения результата работы программы. По умолчанию - путь файла шифртекста с меткой {processed}\n";
 		std::cout << "-a Задает алфавит шифртекста. По умолчанию - кириллица\n";
 		std::cout << "-af Задает путь к файлу с алфавитом шифртекста\n\n";
-		std::cout << "При вводе координат можно указать следуюшие значения:\n\n";
+		std::cout << "При вводе координат так же можно указать следуюшие значения:\n\n";
 		std::cout << "-1: выход из программы с сохранением результата работы. Ctrl + C - выход без сохранения результата\n";
 		std::cout << "-2: очистить все ранее выбранные координаты\n";
 		std::cout << "-3: указать поворот решётки\n";
@@ -476,7 +474,7 @@ void parse_arguments(int argc, char* argv[], short& gridSize, std::string& encry
 	if (cmdOptionExists(argv, argv + argc, "-a"))
 		alphabet = getCmdOption(argc, argv, "-a");
 	else if (cmdOptionExists(argv, argv + argc, "-af"))
-		readFile(alphabet, getCmdOption(argc, argv, "-a"));
+		readFile(alphabet, getCmdOption(argc, argv, "-af"));
 	else
 		alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 }
