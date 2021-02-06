@@ -10,7 +10,7 @@ void checkFile(std::string fileName)
 
 	if (!temp.is_open())
 	{
-		std::cout << "Невозможно открыть файл '" << fileName << "'\n";
+		std::cout << "РќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» '" << fileName << "'\n";
 		exit(0);
 	}
 	else
@@ -24,7 +24,7 @@ void checkFile(std::string fileName)
 		}
 		temp.close();
 
-		std::cout << "Файл '" << fileName << "' пуст!\n";
+		std::cout << "Р¤Р°Р№Р» '" << fileName << "' РїСѓСЃС‚!\n";
 		exit(0);
 
 	}
@@ -63,7 +63,7 @@ void save(boolVector2d constChosenGridPositions, std::string encriptedText, size
 		out << "\n";
 	}
 
-	out << "\nОткрытый текст:\n";
+	out << "\nРћС‚РєСЂС‹С‚С‹Р№ С‚РµРєСЃС‚:\n";
 
 	for (auto i = 0; i < 4; i++)
 	{
@@ -89,7 +89,7 @@ void createNewGrid(boolVector2d& newGrid, size_t size)
 {
 	std::vector<bool> buff;
 
-	for (auto i = 0; i < size; i++)  // заполнение нулями всех клеток
+	for (auto i = 0; i < size; i++)  // Р·Р°РїРѕР»РЅРµРЅРёРµ РЅСѓР»СЏРјРё РІСЃРµС… РєР»РµС‚РѕРє
 	{
 		for (auto j = 0; j < size; j++)
 			buff.push_back(false);
@@ -135,7 +135,7 @@ void createEncryptedGrid(stringVector2d& encryptedGridBlocks, std::string text, 
 
 	for (auto k = 0; k < (int)text.size() / (sizeGrid * sizeGrid); k++)
 	{
-		for (auto i = k * sizeGrid; i < (k + 1) * sizeGrid; i++) // заполнение решётки шифртекстом
+		for (auto i = k * sizeGrid; i < (k + 1) * sizeGrid; i++) // Р·Р°РїРѕР»РЅРµРЅРёРµ СЂРµС€С‘С‚РєРё С€РёС„СЂС‚РµРєСЃС‚РѕРј
 		{
 			for (auto j = i * sizeGrid; j < (i + 1) * sizeGrid; j++)
 				buff.push_back(text[j]);
@@ -148,7 +148,7 @@ void createEncryptedGrid(stringVector2d& encryptedGridBlocks, std::string text, 
 
 	if(encryptedGridBlocks.size() == 0)
 	{
-		std::cout << "При указанных параметрах недостаточно шифрматериала для работы программы.\n\n";
+		std::cout << "РџСЂРё СѓРєР°Р·Р°РЅРЅС‹С… РїР°СЂР°РјРµС‚СЂР°С… РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ С€РёС„СЂРјР°С‚РµСЂРёР°Р»Р° РґР»СЏ СЂР°Р±РѕС‚С‹ РїСЂРѕРіСЂР°РјРјС‹.\n\n";
 		exit(0);
 	}
 }
@@ -275,7 +275,7 @@ void displayEncriptedText(stringVector2d encryptedGridBlocks, boolVector2d chose
 			textPos = 0;
 		}
 
-	std::cout << "Открытый текст:\n";
+	std::cout << "РћС‚РєСЂС‹С‚С‹Р№ С‚РµРєСЃС‚:\n";
 
 	for (auto i = 0; i < 4; i++)
 	{
@@ -317,13 +317,13 @@ void work(stringVector2d encryptedGridBlocks, std::string decryptedTextFileName)
 		displayEncryptedGrid(encryptedGridBlocks, chosenGridPositions, forbiddenGridPositions);
 		displayEncriptedText(encryptedGridBlocks, constChosenGridPositions, constTurn, encriptedText);
 
-		std::cout << "Введите координаты: ";
-		std::cin >> i;  // ввод первой координыты
+		std::cout << "Р’РІРµРґРёС‚Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹: ";
+		std::cin >> i;  // РІРІРѕРґ РїРµСЂРІРѕР№ РєРѕРѕСЂРґРёРЅС‹С‚С‹
 
-		if (i == -1)  // выход 
+		if (i == -1)  // РІС‹С…РѕРґ 
 			break;
 
-		if (i == -2)  // очистка 
+		if (i == -2)  // РѕС‡РёСЃС‚РєР° 
 		{
 			chosenGridPositions.clear();
 			createPositionsGrid(chosenGridPositions, sizeGrid);
@@ -332,9 +332,9 @@ void work(stringVector2d encryptedGridBlocks, std::string decryptedTextFileName)
 			continue;
 		}
 
-		if (i == -3)  // поворот решётки
+		if (i == -3)  // РїРѕРІРѕСЂРѕС‚ СЂРµС€С‘С‚РєРё
 		{
-			std::cout << "Введите поворот решётки: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РїРѕРІРѕСЂРѕС‚ СЂРµС€С‘С‚РєРё: ";
 			std::cin >> turn;
 
 			constTurn += turn;
@@ -354,11 +354,11 @@ void work(stringVector2d encryptedGridBlocks, std::string decryptedTextFileName)
 				continue;
 		}
 
-		std::cin >> j;  // ввод второй координыты
+		std::cin >> j;  // РІРІРѕРґ РІС‚РѕСЂРѕР№ РєРѕРѕСЂРґРёРЅС‹С‚С‹
 
 		if ((i < 0) || (i >= sizeGrid) || (j < 0) || (j >= sizeGrid))
 		{
-			std::cout << "Неверныее координыты.\n";
+			std::cout << "РќРµРІРµСЂРЅС‹РµРµ РєРѕРѕСЂРґРёРЅС‹С‚С‹.\n";
 			system("pause");
 			continue;
 		}
@@ -375,7 +375,7 @@ void work(stringVector2d encryptedGridBlocks, std::string decryptedTextFileName)
 		}
 		else
 		{
-			std::cout << "Произойдёт наложение.\n";
+			std::cout << "РџСЂРѕРёР·РѕР№РґС‘С‚ РЅР°Р»РѕР¶РµРЅРёРµ.\n";
 			system("pause");
 		}
 	}
@@ -406,26 +406,26 @@ std::string getCmdOption(int argc, char* argv[], const std::string& option)
 
 void parse_arguments(int argc, char* argv[], short& gridSize, std::string& encryptedTextFileName, std::string& decryptedTextFileName, std::string& alphabet)
 {
-	// Вывод справки
+	// Р’С‹РІРѕРґ СЃРїСЂР°РІРєРё
 	if (cmdOptionExists(argv, argv + argc, "-h"))
 	{
-		std::cout << "Использование: CardanCipher -s [размер решётки] -i [путь к файлу с шифртекстом]\n\n";
-		std::cout << "Параметры:\n\n";
-		std::cout << "-s Задает размер решётки\n";
-		std::cout << "-i Задает путь к файлу с шифртекстом\n";
-		std::cout << "-o Задает путь к файлу для сохранения результата работы программы. По умолчанию - путь файла шифртекста с меткой {processed}\n";
-		std::cout << "-a Задает алфавит шифртекста. По умолчанию - кириллица\n";
-		std::cout << "-af Задает путь к файлу с алфавитом шифртекста\n\n";
-		std::cout << "При вводе координат так же можно указать следуюшие значения:\n\n";
-		std::cout << "-1: выход из программы с сохранением результата работы. Ctrl + C - выход без сохранения результата\n";
-		std::cout << "-2: очистить все ранее выбранные координаты\n";
-		std::cout << "-3: указать поворот решётки\n";
-		std::cout << "Для отмены ранее выбранной координаты необходимо ввести её повторно.\n";
+		std::cout << "РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: CardanCipher -s [СЂР°Р·РјРµСЂ СЂРµС€С‘С‚РєРё] -i [РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ СЃ С€РёС„СЂС‚РµРєСЃС‚РѕРј]\n\n";
+		std::cout << "РџР°СЂР°РјРµС‚СЂС‹:\n\n";
+		std::cout << "-s Р—Р°РґР°РµС‚ СЂР°Р·РјРµСЂ СЂРµС€С‘С‚РєРё\n";
+		std::cout << "-i Р—Р°РґР°РµС‚ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ СЃ С€РёС„СЂС‚РµРєСЃС‚РѕРј\n";
+		std::cout << "-o Р—Р°РґР°РµС‚ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚Р° СЂР°Р±РѕС‚С‹ РїСЂРѕРіСЂР°РјРјС‹. РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РїСѓС‚СЊ С„Р°Р№Р»Р° С€РёС„СЂС‚РµРєСЃС‚Р° СЃ РјРµС‚РєРѕР№ {processed}\n";
+		std::cout << "-a Р—Р°РґР°РµС‚ Р°Р»С„Р°РІРёС‚ С€РёС„СЂС‚РµРєСЃС‚Р°. РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РєРёСЂРёР»Р»РёС†Р°\n";
+		std::cout << "-af Р—Р°РґР°РµС‚ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ СЃ Р°Р»С„Р°РІРёС‚РѕРј С€РёС„СЂС‚РµРєСЃС‚Р°\n\n";
+		std::cout << "РџСЂРё РІРІРѕРґРµ РєРѕРѕСЂРґРёРЅР°С‚ С‚Р°Рє Р¶Рµ РјРѕР¶РЅРѕ СѓРєР°Р·Р°С‚СЊ СЃР»РµРґСѓСЋС€РёРµ Р·РЅР°С‡РµРЅРёСЏ:\n\n";
+		std::cout << "-1: РІС‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹ СЃ СЃРѕС…СЂР°РЅРµРЅРёРµРј СЂРµР·СѓР»СЊС‚Р°С‚Р° СЂР°Р±РѕС‚С‹. Ctrl + C - РІС‹С…РѕРґ Р±РµР· СЃРѕС…СЂР°РЅРµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚Р°\n";
+		std::cout << "-2: РѕС‡РёСЃС‚РёС‚СЊ РІСЃРµ СЂР°РЅРµРµ РІС‹Р±СЂР°РЅРЅС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹\n";
+		std::cout << "-3: СѓРєР°Р·Р°С‚СЊ РїРѕРІРѕСЂРѕС‚ СЂРµС€С‘С‚РєРё\n";
+		std::cout << "Р”Р»СЏ РѕС‚РјРµРЅС‹ СЂР°РЅРµРµ РІС‹Р±СЂР°РЅРЅРѕР№ РєРѕРѕСЂРґРёРЅР°С‚С‹ РЅРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РµС‘ РїРѕРІС‚РѕСЂРЅРѕ.\n";
 
 		exit(0);
 	}
 
-	// Инициализация gridSize
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ gridSize
 	if (cmdOptionExists(argv, argv + argc, "-s"))
 	{
 		try
@@ -437,26 +437,26 @@ void parse_arguments(int argc, char* argv[], short& gridSize, std::string& encry
 		}
 		catch (...)
 		{
-			std::cout << "Неверно указан размер решётки - чётное положитльное число.\n\n";
+			std::cout << "РќРµРІРµСЂРЅРѕ СѓРєР°Р·Р°РЅ СЂР°Р·РјРµСЂ СЂРµС€С‘С‚РєРё - С‡С‘С‚РЅРѕРµ РїРѕР»РѕР¶РёС‚Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ.\n\n";
 			exit(0);
 		}
 	}
 	else
 	{
-		std::cout << "Необходимо указать размер решётки - чётное положительное число.\nИспользуйте параметр -s.\n\n";
+		std::cout << "РќРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ СЂР°Р·РјРµСЂ СЂРµС€С‘С‚РєРё - С‡С‘С‚РЅРѕРµ РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРµ С‡РёСЃР»Рѕ.\nРСЃРїРѕР»СЊР·СѓР№С‚Рµ РїР°СЂР°РјРµС‚СЂ -s.\n\n";
 		exit(0);
 	}
 
-	// Инициализация encryptedTextFileName
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ encryptedTextFileName
 	if (cmdOptionExists(argv, argv + argc, "-i"))
 			encryptedTextFileName = getCmdOption(argc, argv, "-i");
 	else
 	{
-		std::cout << "Необходимо указать путь к файлу с шифртекстом.\nИспользуйте параметр -i.\n\n";
+		std::cout << "РќРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ СЃ С€РёС„СЂС‚РµРєСЃС‚РѕРј.\nРСЃРїРѕР»СЊР·СѓР№С‚Рµ РїР°СЂР°РјРµС‚СЂ -i.\n\n";
 		exit(0);
 	}
 
-	// Инициализация decryptedTextFileName
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ decryptedTextFileName
 	if (cmdOptionExists(argv, argv + argc, "-o"))
 		decryptedTextFileName = getCmdOption(argc, argv, "-o");
 	else
@@ -470,13 +470,13 @@ void parse_arguments(int argc, char* argv[], short& gridSize, std::string& encry
 			decryptedTextFileName += " {processed}";
 	}
 
-	// Инициализация alphabet
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ alphabet
 	if (cmdOptionExists(argv, argv + argc, "-a"))
 		alphabet = getCmdOption(argc, argv, "-a");
 	else if (cmdOptionExists(argv, argv + argc, "-af"))
 		readFile(alphabet, getCmdOption(argc, argv, "-af"));
 	else
-		alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+		alphabet = "Р°Р±РІРіРґРµС‘Р¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏ";
 }
 
 
@@ -494,11 +494,11 @@ int main(int argc, char* argv[])
 	parse_arguments(argc, argv, gridSize, encryptedTextFileName, decryptedTextFileName, alphabet);
 
 	std::string encryptedText;
-	readFile(encryptedText, encryptedTextFileName);  // считываем шифртекст 
-	deleteForbiddenSymbols(encryptedText, alphabet);  // удаляем лишние символы
+	readFile(encryptedText, encryptedTextFileName);  // СЃС‡РёС‚С‹РІР°РµРј С€РёС„СЂС‚РµРєСЃС‚ 
+	deleteForbiddenSymbols(encryptedText, alphabet);  // СѓРґР°Р»СЏРµРј Р»РёС€РЅРёРµ СЃРёРјРІРѕР»С‹
 
 	stringVector2d encryptedGridBlocks;
-	createEncryptedGrid(encryptedGridBlocks, encryptedText, gridSize);  // создаём массив решёток шифртекста
+	createEncryptedGrid(encryptedGridBlocks, encryptedText, gridSize);  // СЃРѕР·РґР°С‘Рј РјР°СЃСЃРёРІ СЂРµС€С‘С‚РѕРє С€РёС„СЂС‚РµРєСЃС‚Р°
 
 	work(encryptedGridBlocks, decryptedTextFileName);
 
